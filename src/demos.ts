@@ -31,13 +31,13 @@ export class SingleBounce implements Demo {
     if ((this.context.canvas.height - this.radius) - this.ball.y <= 1e-6) {
       this.maxVelocity *= this.damping;
       this.ball.velocity.y = this.maxVelocity;
+      this.ball.y = (this.context.canvas.height - this.radius);
       this.ball.velocity.x *= this.damping;
     }
 
     if (this.ball.x - this.radius <= 1e-6 
         || this.context.canvas.width - this.radius - this.ball.x <= 1e-6) { 
       this.ball.velocity.x *= -1;
-      this.ball.velocity.x *= this.damping;
     }
 
     this.ball.update();
