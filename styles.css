@@ -16,7 +16,7 @@ h1 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 20%;
+  width: 300px;
   margin: auto;
 }
 
@@ -24,4 +24,21 @@ h1 {
   text-align: center;
   width: 70%;
   margin: auto;
+}
+
+#physics-input {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media screen and (max-width: 900px) {
+  #content {
+    width: 95%;
+  }
 }

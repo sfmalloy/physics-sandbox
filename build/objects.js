@@ -8,8 +8,8 @@ export class GameObject {
         this.rotation = rotation;
         this.velocity = new Vector2(0, 0);
     }
-    update() {
-        this.x += this.velocity.x;
-        this.y += this.velocity.y;
+    update(deltaTime) {
+        this.x += this.velocity.x * deltaTime;
+        this.y += this.velocity.y * deltaTime;
     }
 }
