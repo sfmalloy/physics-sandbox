@@ -29,7 +29,8 @@ const draw = () => {
 const form: HTMLFormElement = document.querySelector('#update-physics');
 form.onsubmit = (event) => {
   event.preventDefault();
-  demo = new SingleBounce(new Vector2(canvas.width / 2, canvas.height / 2), context, parseFloat(bounceSlider.value), parseFloat(initialXVelocity.value) * 250);
+  sign *= -1;
+  demo = new SingleBounce(new Vector2(canvas.width / 2, canvas.height / 2), context, parseFloat(bounceSlider.value), sign * parseFloat(initialXVelocity.value) * 250);
 }
 
 const bounceSlider: HTMLInputElement = document.querySelector('#damping-range');
@@ -49,5 +50,6 @@ document.querySelector('#velocity-amount').innerHTML = initialXVelocity.value;
 
 let demo = new SingleBounce(new Vector2(canvas.width / 2, canvas.height / 2), context, parseFloat(bounceSlider.value), parseFloat(initialXVelocity.value) * 250);
 let time = 0;
+let sign = 1;
 
 doUpdate(0);

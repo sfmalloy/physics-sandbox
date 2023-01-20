@@ -23,10 +23,12 @@ export class SingleBounce {
         }
         if (this.context.canvas.width - this.radius - this.ball.x <= EPISILON) {
             this.ball.velocity.x *= -1;
+            this.ball.velocity.x *= this.damping;
             this.ball.x = this.context.canvas.width - this.radius;
         }
         if (this.ball.x - this.radius <= EPISILON) {
             this.ball.velocity.x *= -1;
+            this.ball.velocity.x *= this.damping;
             this.ball.x = this.radius;
         }
         this.ball.update(deltaTime);
