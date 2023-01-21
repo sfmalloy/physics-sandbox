@@ -1,7 +1,7 @@
 import { Vector2 } from './math.js';
 import { GameObject } from './objects.js';
 
-interface Demo {
+export interface Demo {
   update(deltaTime: number): void;
   draw(): void;
 }
@@ -9,7 +9,7 @@ interface Demo {
 const g = 2640;
 const EPISILON = 1e-45;
 
-export class SingleBounce implements Demo {
+export class Ball implements Demo {
   ball: GameObject;
   maxVelocity: number;
   radius: number;
@@ -21,7 +21,6 @@ export class SingleBounce implements Demo {
     this.ball.color = 'blue';
     this.radius = this.ball.h / 2;
     this.maxVelocity = -g * Math.sqrt(2 * this.ball.y / g);
-    console.log(`max velocity = ${this.maxVelocity}`);
     this.context = context;
     this.ball.velocity.x = initialXVelocity;
     this.damping = damping;
@@ -57,3 +56,15 @@ export class SingleBounce implements Demo {
     this.context.fill();
   }
 }
+
+// export class MultiBounce implements Demo {
+//   balls: Ball[];
+
+//   update(deltaTime: number): void {
+    
+//   }
+
+//   draw(): void {
+    
+//   }
+// }
