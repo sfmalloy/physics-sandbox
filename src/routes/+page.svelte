@@ -6,7 +6,7 @@
   import Slider from "../slider.svelte";
 
   let xSpeed: number = 4;
-  let bounce: number = 1;
+  let bounce: number = 0.5;
   let sign = 1;
 
   let canvas: HTMLCanvasElement;
