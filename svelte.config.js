@@ -13,10 +13,7 @@ const config = {
 		paths: {
 			base: dev ? '' : '/physics-sandbox'
 		},
-		adapter: adapter({
-			pages: 'docs',
-			assets: 'docs'
-		}),
+		adapter: adapter(),
 	}
 };
 
