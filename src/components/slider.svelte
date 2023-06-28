@@ -15,8 +15,12 @@
 <style>
   div {
     display: grid;
-    justify-content: center;
     align-items: center;
     grid-template-columns: 50% 50%;
+  }
+
+  label {
+    justify-self: self-end;
+    padding-right: 10px;
   }
 </style>

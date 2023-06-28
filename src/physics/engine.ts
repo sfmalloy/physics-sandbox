@@ -1,5 +1,4 @@
-import { Demo } from './demos';
-import { Vector2 } from './math';
+import type { Demo } from './demos';
 
 export class Engine {
   demo: Demo;
@@ -7,8 +6,8 @@ export class Engine {
   time: number;
 
   constructor(context: CanvasRenderingContext2D) {
-    // this.demo = demo;
     this.context = context;
+
     this.time = 0;
     this.start();
   }

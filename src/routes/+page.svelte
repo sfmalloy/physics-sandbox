@@ -1,48 +1,37 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Ball } from "../physics/demos";
-  import { Engine } from "../physics/engine";
-  import { Vector2 } from "../physics/math";
-  import Slider from "../slider.svelte";
+  import { Engine } from "$physics/engine";
+  import Ball from '$demos/ball.svelte';
+  import Pendulum from "$demos/pendulum.svelte";
 
-  let xSpeed: number = 4;
-  let bounce: number = 0.5;
-  let sign = 1;
+  let demoType = "ball";
 
   let canvas: HTMLCanvasElement;
   let engine: Engine;
-  let center: Vector2;
   let context: CanvasRenderingContext2D;
 
   onMount(() => {
-    center = new Vector2(canvas.width / 2, canvas.height / 2);
     context = canvas.getContext('2d');
     engine = new Engine(context);
-
-    window.onkeydown = (event) => {
-      if (event.key.toLowerCase() === "r") {
-        engine.setDemo(new Ball(center, context, bounce, sign * xSpeed * 250));
-        sign *= -1;
-      }
-    }
-
   });
-
-  const handleForm = () => {
-    engine.setDemo(new Ball(center, context, bounce, sign * xSpeed * 250));
-    sign *= -1;
-  };
 </script>
 
 <div id="content">
   <h1>Physics Sandbox</h1>
+  <select name="demo-type" id="demo-type" bind:value={demoType}>
+    <option value="ball">Ball</option>
+    <option value="pendulum">Pendulum</option>
+  </select>
   <div id="game">
     <canvas bind:this={canvas} width={500} height={500} />
-    <form on:submit|preventDefault={handleForm}>
-      <Slider bind:value={bounce} name="bounce" label="Bounce" min={0} max={1} step={0.01} />
-      <Slider bind:value={xSpeed} name="x-speed" label="X Speed" min={0} max={20} step={0.1} />
-      <button type="submit">Start</button>
-    </form>
+  
+    {#if engine}
+      {#if demoType === "ball"}
+        <Ball engine={engine} />
+      {:else}
+        <Pendulum engine={engine} />
+      {/if}
+    {/if}
   </div>
 </div>
 
@@ -53,17 +42,10 @@
 
   h1 {
     font-size: 48px;
+    margin: 16px 0 16px 0;
   }
 
-  form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 300px;
-    margin: auto;
-  }
-
-  button {
-    font-family: inherit;
+  select {
+    margin-bottom: 20px;
   }
 </style>

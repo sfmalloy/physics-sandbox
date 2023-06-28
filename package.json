@@ -20,6 +20,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^1.0.5"
+		"@sveltejs/adapter-static": "^1.0.5",
+		"prettier": "^2.8.8",
+		"prettier-plugin-svelte": "^2.10.1"
 	}
 }

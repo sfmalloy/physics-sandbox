@@ -14,6 +14,11 @@ const config = {
 			base: dev ? '' : '/physics-sandbox'
 		},
 		adapter: adapter(),
+		alias: {
+			'$physics/*': './src/physics/*',
+			'$components/*': './src/components/*',
+			'$demos/*': './src/demos/*'
+		}
 	}
 };
 

@@ -9,20 +9,20 @@ export interface Demo {
 const g = 2640;
 const EPISILON = 1e-45;
 
-export class Ball implements Demo {
+export class BallDemo implements Demo {
   ball: GameObject;
   maxVelocity: number;
   radius: number;
   context: CanvasRenderingContext2D;
   damping: number;
 
-  constructor(initalPosition: Vector2, context: CanvasRenderingContext2D, damping: number = 1, initialXVelocity: number = 1000) {
+  constructor(initalPosition: Vector2, context: CanvasRenderingContext2D, damping: number, initialXVelocity: number) {
     this.ball = new GameObject(initalPosition, new Vector2(50, 50));
     this.ball.color = 'blue';
     this.radius = this.ball.h / 2;
     this.maxVelocity = -g * Math.sqrt(2 * this.ball.y / g);
     this.context = context;
-    this.ball.velocity.x = initialXVelocity;
+    this.ball.velocity.x = initialXVelocity * 250;
     this.damping = damping;
   }
 
@@ -57,14 +57,23 @@ export class Ball implements Demo {
   }
 }
 
-// export class MultiBounce implements Demo {
-//   balls: Ball[];
+export class PendulumDemo implements Demo {
+  weight: GameObject;
+  radius: number;
+  context: CanvasRenderingContext2D;
 
-//   update(deltaTime: number): void {
-    
-//   }
+  constructor(context: CanvasRenderingContext2D) {
+    this.context = context;
+  }
 
-//   draw(): void {
+  update(deltaTime: number): void {
     
-//   }
-// }
+  }
+
+  draw(): void {
+    this.context.fillStyle = 'black';
+    this.context.font = '24px "Fira Sans"';
+    this.context.textAlign = 'center';
+    this.context.fillText("Not Implemented Yet", this.context.canvas.width / 2, 50);
+  }
+}
